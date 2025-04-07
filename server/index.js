@@ -4,6 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const diaryRoutes = require('./src/routes/diaryRoutes');
 const commentRoutes = require('./src/routes/commentRoutes');
+const authRoutes = require('./src/routes/authRoutes');
 
 // 加载环境变量
 dotenv.config();
@@ -21,10 +22,11 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/diary-app
 
 // 基础路由
 app.get('/', (req, res) => {
-  res.send('Diary API is running');
+  res.json({ message: 'Diary API is running' });
 });
 
 // API 路由
+app.use('/api/auth', authRoutes);
 app.use('/api/diaries/:diaryId/comments', commentRoutes);
 app.use('/api/diaries', diaryRoutes);
 
