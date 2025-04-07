@@ -6,7 +6,7 @@ import { AuthProvider } from './context/AuthContext';
 import axios from 'axios';
 
 // 设置 axios 默认配置
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 // 添加请求拦截器
 axios.interceptors.request.use(
