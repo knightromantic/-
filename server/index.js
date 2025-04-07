@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/diary-app
 
 // 基础路由
 app.get('/', (req, res) => {
-  res.json({ message: 'Diary API is running' });
+  res.json({ message: 'Diary API is running', version: '1.0.0' });
 });
 
 // API 路由
